@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    Ini adalah halaman fahmi
+    
+    <p>Nama Karyawan Teladan Minggu Ini : </p>
+    {{$data_karyawan}}
+
 </body>
 </html>

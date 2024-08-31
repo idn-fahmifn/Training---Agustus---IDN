@@ -20,7 +20,7 @@ class CekUmur
 
         // jika umurnya dibawah 18 tahun, maka akan diarahkan ke form inputnya lagi.
 
-        if($umur <= 18){
+        if($umur < 18){
             return back()->with('error', 'Umur kamu belum mencapai 18 tahun');
         }
 

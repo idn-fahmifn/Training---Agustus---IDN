@@ -1,9 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
+// import controller
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UmurController;
+use App\Http\Controllers\EmployeeController;
+
+// import middleware
+use App\Http\Middleware\CekUmur;
 
 // untuk menampilkan halaman.
 Route::get('/', function () {
@@ -50,8 +56,13 @@ Route::post('cek_proses', [UmurController::class, 'cekProses'])->name('proses');
 
 route::get('home', function(){
     return "kamu sudah berusia lebih dari 18 tahun";
-});
+})->middleware(CekUmur::class);
+
+// controller
+Route::get('employee', [EmployeeController::class, 'index']);
 
 
 
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
