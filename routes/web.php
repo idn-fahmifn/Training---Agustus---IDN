@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controller\ProfileController;
+
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UmurController;
 
 // untuk menampilkan halaman.
 Route::get('/', function () {
@@ -28,6 +30,28 @@ Route::fallback(function(){
 // Route::put('profile/{id}');
 // Route::delete('profile/{id}');
 // =
-// Route::resource('profile', ProfileController::class);
+
+Route::resource('profile', ProfileController::class);
+
+// Route::get('profile/create', function(){
+
+// });
+
+// mengalihka beberapa method
+Route::match(['GET','POST'], 'jangan_dibuka',  function(){
+    return redirect ('/');
+});
+
+
+// Middleware
+
+Route::get('cek_umur_saya', [UmurController::class, 'showForm']);
+Route::post('cek_proses', [UmurController::class, 'cekProses'])->name('proses');
+
+route::get('home', function(){
+    return "kamu sudah berusia lebih dari 18 tahun";
+});
+
+
 
 
